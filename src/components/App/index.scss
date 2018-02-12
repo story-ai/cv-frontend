@@ -1,2 +1,19 @@
 .app-container {
+  height: 100%;
+  .contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    & > * {
+      max-width: 480px;
+    }
+    .uploader {
+      flex: 1;
+    }
+    .endorsements {
+      flex: 1;
+    }
+  }
 }

@@ -31,16 +31,22 @@
     "staging-deploy": "npm run deploy -- $npm_package_env_staging_s3 && npm run staging-invalidate",
     "invalidate": "aws cloudfront --profile story-serverless create-invalidation --paths '/*'",
     "prod-invalidate": "npm run invalidate -- --distribution-id  $npm_package_env_prod_cloudfront",
-    "staging-invalidate": "npm run invalidate -- --distribution-id  $npm_package_env_staging_cloudfront"
+    "staging-invalidate": "npm run invalidate -- --distribution-id  $npm_package_env_staging_cloudfront",
+    "generate-types": "soltsice ./build/contracts ./src/contracts",
+    "build-contracts": "truffle compile && truffle migrate"
   },
   "dependencies": {
     "@types/aws-lambda": "0.0.27",
     "@types/aws-sdk": "^2.7.0",
+    "@types/react-dropzone": "^4.2.0",
     "aws-sdk": "^2.188.0",
+    "ethjs": "^0.3.3",
     "html-webpack-plugin": "^2.30.1",
+    "js-sha3": "^0.7.0",
     "lodash": "^4.17.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-dropzone": "^4.2.7",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
@@ -50,11 +56,15 @@
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.17.0",
     "rxjs": "^5.5.2",
+    "soltsice": "^0.10.2",
     "story-backend-utils": "^0.1.8",
     "superagent": "^3.8.2",
-    "underscore": "^1.8.3"
+    "truffle-contract": "^3.0.3",
+    "underscore": "^1.8.3",
+    "web3": "^1.0.0-beta.29"
   },
   "devDependencies": {
+    "truffle": "^4.0.6",
     "@types/clean-webpack-plugin": "^0.1.0",
     "@types/extract-text-webpack-plugin": "^3.0.0",
     "@types/html-webpack-plugin": "^2.30.1",
@@ -93,6 +103,7 @@
     "style-loader": "^0.19.1",
     "ts-node": "^4.1.0",
     "typescript": "^2.7.1",
+    "web3-typescript-typings": "^0.9.9",
     "webpack": "^3.10.0",
     "webpack-closure-compiler": "^2.1.6",
     "webpack-dev-server": "^2.11.1",
